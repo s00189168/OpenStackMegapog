@@ -2,9 +2,6 @@
 
 Keyword aggregation system for Twitch streams.
 
-## Architecture
-
-![MegaPog Architecture](docs/megapog.png)
 
 ## Pre-requisites
 
