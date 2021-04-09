@@ -6,7 +6,7 @@ import { GlobalPogStats } from '../../types/pog-stats.type';
 @Component({
   selector: 'pog-stats-chart',
   template: `
-    <div class="container px-4 py-3 mb-4">
+    <div class="container-fluid px-4 py-3 mb-4">
       <div class="row align-items-start">
         <div class="col-12 home-total-stats-header pt-3 align-items-center">
           <h2>Pog Breakdown</h2>
@@ -125,7 +125,7 @@ export class PogStatsChartComponent implements OnChanges {
   }
 
   private drawChart(): void {
-    this.width = this.chartElem.nativeElement.getBoundingClientRect().width - 100;
+    this.width = this.chartElem.nativeElement.getBoundingClientRect().width - 10;
     this.svg.attr('width', this.width);
     this.svg.attr('class', 'svg');
     this.xScale.range([this.margin, this.width - 2 * this.margin]);
