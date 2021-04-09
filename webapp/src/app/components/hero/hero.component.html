@@ -1,0 +1,27 @@
+
+<div class="pog-hero">
+    <div class="container col-xxl-8 px-4 py-3">
+        <div class="row flex-lg-row-reverse align-items-center g-5 pt-3 pb-5">
+            <div class="col-10 col-sm-8 col-lg-5 d-none d-lg-block">
+                <img src="assets/images/poggy.png" class="d-block mx-lg-auto img-fluid poggy" alt="Poggy" loading="lazy">
+            </div>
+            <div class="col-lg-7">
+                <h1 class="display-5 fw-bold lh-1 mb-3">MegaPog</h1>
+                <p class="lead">
+                    Who's got the poggest chat? Well you do of course! Find out which streams
+                    pog the most, regardless of whether it is Pog, PogChamp, PogU, or even POGGERS!
+                    MegaPog provides stats on important on-stream activity to help you understand which
+                    moments matter the most.
+                </p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <a class="btn btn-primary btn-lg px-4 me-md-2 mr-3" href="{{callbackUrl}}" *ngIf=!authenticated>
+                        Login with Twitch 🚀
+                    </a>
+                    <a class="btn btn-primary btn-lg px-4 me-md-2 mr-3" [routerLink]="['/my-channel']" *ngIf=authenticated>
+                        Go to my channel 📊
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+h2 {
+    color: #fff;
+    text-shadow: 2px 2px 0px #125B4C;
+}
+
+h3 {
+    font-family: Bungee, sans-serif;
+    font-weight: 400;
+    font-size: 1.5em;
+}
+
+.total-stats-container {
+    background-color: #1b163f;
+}
+
+.total-stats-header {
+    background: rgb(117,206,189);
+    margin-top: -25px;
+    text-align: center;
+}
+
+.total-stats {
+    background: rgb(117,206,189);
+    background: linear-gradient(180deg, rgba(117,206,189,1) 0%, rgba(162,201,147,1) 100%);
+    margin-bottom: -35px;
+    min-height: 200px;
+    text-align: center;
+}
+
+.badge-primary {
+    background-color: #4b3db1;
+  }
+
+@media (max-width: 767.98px) {
+    .total-stats:nth-child(1) {
+        margin-bottom: 2px;
+    }
+    .total-stats:nth-child(2) {
+        margin-bottom: 2px;
+    }
+}

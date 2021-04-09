@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Build server
+        run: |
+          cd server
+          npm install
+          cd ..
+
+      - name: Build website
+        run: |
+          cd webapp
+          npm install
+          npm run build:prod
+          ls -la
+          cd ..
+
+      - name: Copy built app via SCP
+        uses: appleboy/scp-action@master
+        with:
+          HOST: ${{ secrets.HOST }}
+          USERNAME: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          KEY: ${{ secrets.SSHKEY }}
+          source: "."
+          target: "/opt/megapog"
+      
+      - name: Start the API
+        uses: appleboy/ssh-action@master
+        with:
+          HOST: ${{ secrets.HOST }}
+          USERNAME: ${{ secrets.USERNAME }}
+          KEY: ${{ secrets.SSHKEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /opt/megapog/server
+            screen -S server -X quit 2>&1
+            sleep 2
+            cp /opt/server.json /opt/megapog/server/config/default.json
+            screen -S server -d -m /snap/bin/node index.js
+            cd ..
+      
+      - name: Start the Chatbot
+        uses: appleboy/ssh-action@master
+        with:
+          HOST: ${{ secrets.HOST }}
+          USERNAME: ${{ secrets.USERNAME }}
+          KEY: ${{ secrets.SSHKEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /opt/megapog/chatbot
+            pipenv --python 3.8
+            pipenv install
+            cp /opt/chatbot.env /opt/megapog/chatbot/.env
+            screen -S chatbot -X quit 2>&1
+            sleep 3
+            screen -S chatbot -d -m pipenv run python main.py
+            cd ..
+

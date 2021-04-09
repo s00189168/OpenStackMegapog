@@ -1,0 +1,18 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pubnub = "*"
+typing-extensions = "*"
+requests = "*"
+twitchio = "==2.0.0b4"
+
+[dev-packages]
+
+[requires]
+python_version = "3.7.3"
+
+[pipenv]
+allow_prereleases = true

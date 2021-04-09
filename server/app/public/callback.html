@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Authenticating...</title>
+</head>
+<body>
+    <script>    
+        // Retrieve access_token, scope, state, token_type from hash
+        const params = parseParms(document.location.hash.replace("#", ""));
+        
+        var payload = {
+            "access_token": params["access_token"],
+            "scope": params["scope"],
+            "state": params["state"], 
+            "token_type": params["token_type"]
+        };
+
+        fetch("/auth",
+        {
+            method: "POST",
+            body: JSON.stringify(payload),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(function(res){ return res.json(); })
+        .then(function(data){ 
+            if ("token" in data) {
+                let domain = "megapog.com";
+                if (window.location.href.indexOf("localhost") > -1) {
+                    domain = "localhost";
+                }
+                Object.keys(data).forEach(key => {
+                    document.cookie = key + "=" + data[key].toString() + ";path=/;domain=" + domain;
+                });
+            }
+            if (window.location.href.indexOf("localhost") > -1) {
+                window.location.replace("https://localhost:4200/");
+            } else {
+                window.location.replace("https://megapog.com/");
+            }
+        });
+
+        function parseParms(str) {
+            var pieces = str.split("&"), data = {}, i, parts;
+            for (i = 0; i < pieces.length; i++) {
+                parts = pieces[i].split("=");
+                if (parts.length < 2) {
+                    parts.push("");
+                }
+                data[decodeURIComponent(parts[0])] = decodeURIComponent(parts[1]);
+            }
+            return data;
+        }
+    </script>
+</body>
+</html>

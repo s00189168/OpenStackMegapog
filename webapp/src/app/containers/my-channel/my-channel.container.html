@@ -1,0 +1,24 @@
+
+<div class="pog-my-channel">
+    <div class="container col-xxl-8 px-4 py-3">
+        <div class="row mt-2">
+            <h1 class="display-5 fw-bold lh-1">{{name}}</h1>
+        </div>
+        <div class="row align-items-center g-5 pt-3 pb-3">
+            <p class="lead">
+                Would you like the bot to join your channel and capture
+                some pogs for you statistical delight?
+            </p>
+        </div>
+        <div class="row">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <button *ngIf="!isActive" type="button" class="btn btn-primary btn-lg px-4 me-md-2 mr-3" (click)="join()">
+                    Join Channel! 🚀
+                </button>
+                <button *ngIf="isActive" type="button" class="btn btn-outline-secondary btn-lg px-4" (click)="part()">
+                    Leave Channel 👋
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

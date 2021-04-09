@@ -1,0 +1,34 @@
+<div class="total-stats-container mb-4">
+    <div class="container px-4 pb-3">
+        <div class="row align-items-start">
+            <div class="col-12 total-stats-header pt-3 align-items-center">
+                <h2>All-Time Pogs</h2>
+            </div>
+        </div>
+        <div class="row align-items-start">
+            <div class="col-6 col-md-3 total-stats py-3 align-items-center">
+                <h3>Pog</h3>
+                <img src="assets/images/pog.png" alt="Pog" class="mx-auto d-block" />
+                <h4><span class="badge badge-primary mt-3" *ngIf="pogStats?.totals?.pog; else zeroTemplate">{{ pogStats?.totals?.pog }}</span></h4>
+            </div>
+            <div class="col-6 col-md-3 total-stats py-3 align-items-center">
+                <h3>PogU</h3>
+                <img src="assets/images/pogu.png" alt="Pog" class="mx-auto d-block" />
+                <h4><span class="badge badge-primary mt-3" *ngIf="pogStats?.totals?.pogu; else zeroTemplate">{{ pogStats?.totals?.pogU }}</span></h4>
+            </div>
+            <div class="col-6 col-md-3 total-stats py-3 align-items-center">
+                <h3>POGGERS</h3>
+                <img src="assets/images/poggers.png" alt="Pog" class="mx-auto d-block" />
+                <h4><span class="badge badge-primary mt-3" *ngIf="pogStats?.totals?.poggers; else zeroTemplate">{{ pogStats?.totals?.poggers }}</span></h4>
+            </div>
+            <div class="col-6 col-md-3 total-stats py-3 align-items-center">
+                <h3>PogChamp</h3>
+                <img src="assets/images/pogchamp.png" alt="Pog" class="mx-auto d-block" />
+                <h4><span class="badge badge-primary mt-3" *ngIf="pogStats?.totals?.pogchamp; else zeroTemplate">{{ pogStats?.totals?.pogChamp }}</span></h4>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #zeroTemplate>
+    <span class="badge badge-primary mt-3">0</span>
+</ng-template>

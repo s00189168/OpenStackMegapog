@@ -1,0 +1,18 @@
+{
+    "app": {
+        "port": 3000
+    },
+    "webapp": {
+        "host": "https://localhost:4200"
+    },
+    "db": "mongodb://localhost:27017/megapog",
+    "pubnub": {
+        "subscribeKey": "",
+        "publishKey": "",
+        "uuid": "megapog-PUB",
+        "channel": "megapog"
+    },
+    "twitch": {
+        "clientId": "43uddiboosgbe7hoj9kopcfkhringa"
+    }
+}
